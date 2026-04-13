@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ARTMIS-2 | Lunar Mission Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="reticle" id="reticle"></div>
+    <div class="fx-overlay" id="warpFx"></div>
+    <div class="fx-overlay reentry" id="reentryFx"></div>
+
+    <div class="boot-sequence" id="bootSequence" aria-live="polite">
+      <div class="boot-content panel" id="bootPanel">
+        <div class="boot-title">// ARTMIS-2 INITIATED</div>
+        <div class="boot-lines" id="bootLines"></div>
+        <div class="boot-progress-wrap"><div class="boot-progress" id="bootProgress"></div></div>
+        <div class="boot-percent" id="bootPercent">0%</div>
+      </div>
+    </div>
+
+    <canvas id="scene"></canvas>
+
+    <header class="hero overlay-panel" id="hero">
+      <p class="phase" id="phaseLabel">// PHASE 01: LAUNCH</p>
+      <h1>ARTMIS-2</h1>
+      <p class="tagline">RETURNING HUMANS TO THE MOON</p>
+      <div class="status-lines">
+        <span>&gt; SYSTEM ONLINE</span>
+        <span>&gt; TRAJECTORY LOCKED</span>
+      </div>
+      <div class="countdown" id="countdown">T-10</div>
+      <div class="hero-actions">
+        <button class="magnetic-btn" id="inspectBtn">INSPECT SPACECRAFT</button>
+        <button class="ghost-btn" id="explodeBtn">TOGGLE EXPLODED VIEW</button>
+      </div>
+    </header>
+
+    <aside class="telemetry panel">
+      <h2>MISSION TELEMETRY</h2>
+      <div class="telemetry-grid">
+        <div><span>ALTITUDE</span><strong id="statAltitude">0 km</strong></div>
+        <div><span>SPEED</span><strong id="statSpeed">0 km/s</strong></div>
+        <div><span>DISTANCE</span><strong id="statDistance">0 km</strong></div>
+      </div>
+      <div class="telemetry-bars">
+        <i id="bar1"></i><i id="bar2"></i><i id="bar3"></i><i id="bar4"></i><i id="bar5"></i>
+      </div>
+    </aside>
+
+    <main id="story">
+      <section class="story-section" data-phase="02" data-label="EARTH DEPARTURE"><p class="phase">// PHASE 02: TRANSIT</p><h2>ESCAPING EARTH'S GRAVITY</h2></section>
+      <section class="story-section" data-phase="03" data-label="SPACE TRAVEL"><p class="phase">// PHASE 03: DEEP SPACE</p><h2>CRUISING THROUGH THE VOID</h2></section>
+      <section class="story-section" data-phase="04" data-label="MOON ORBIT"><p class="phase">// PHASE 04: LUNAR ORBIT</p><h2>LUNAR ORBIT ACHIEVED</h2></section>
+      <section class="story-section" data-phase="05" data-label="LUNAR INTERACTION">
+        <p class="phase">// PHASE 05: SYSTEMS CHECK</p><h2>ENGINEERED FOR SURVIVAL</h2>
+        <div class="feature-cards">
+          <article class="panel feature-card"><h3>Autonomous Navigation</h3><p>AI-assisted corrections maintain stable transfer arcs through cislunar space.</p></article>
+          <article class="panel feature-card"><h3>Thermal Shielding</h3><p>Adaptive ablative layers protect the capsule during high-energy re-entry.</p></article>
+          <article class="panel feature-card"><h3>AI Guidance</h3><p>Mission control + onboard avionics synchronize for fault-tolerant return.</p></article>
+        </div>
+      </section>
+      <section class="story-section" data-phase="06" data-label="RETURN TRAJECTORY"><p class="phase">// PHASE 06: RETURN</p><h2>RETURN TRAJECTORY INITIATED</h2></section>
+      <section class="story-section" data-phase="07" data-label="RE-ENTRY"><p class="phase">// PHASE 07: RE-ENTRY</p><h2>RE-ENTRY SEQUENCE</h2></section>
+      <section class="story-section" data-phase="08" data-label="EARTH LANDING"><p class="phase">// PHASE 08: SPLASHDOWN</p><h2>MISSION COMPLETE</h2></section>
+    </main>
+
+    <div class="inspection panel" id="inspectionPanel" aria-hidden="true">
+      <h3>SPACECRAFT SYSTEMS</h3>
+      <ul>
+        <li data-focus="0">PROPULSION: NOMINAL</li>
+        <li data-focus="1">NAVIGATION: LOCKED</li>
+        <li data-focus="2">LIFE SUPPORT: STABLE</li>
+      </ul>
+      <small>Drag to rotate • Scroll to zoom • Click system labels to focus</small>
+    </div>
+
+    <div class="grain"></div>
+
+    <script src="https://unpkg.com/three@0.165.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.165.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
